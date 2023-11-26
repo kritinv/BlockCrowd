@@ -1,6 +1,7 @@
 # Crowdfunding dapp
 
 ### How to deploy the Solana program
+
 1. Navigate to the project directory
 2. Run `npm install` to install the required dependencies
 3. Generate a new wallet: `solana-keygen new -o id.json`
@@ -11,7 +12,10 @@
 8. Run `anchor deploy`
 
 ### How to run the frontend
+
 1. Navigate to the project directory
 2. Run `cd frontend`
 3. Run `npm install` to install the required dependencies
 4. Run `npm run start`
+
+hi
