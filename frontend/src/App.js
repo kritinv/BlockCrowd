@@ -10,6 +10,8 @@ import {
 } from "@project-serum/anchor";
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
+import CampaignItem from './CampaignItem'; 
+import Header from './Header';
 window.Buffer = Buffer;
 
 const programID = new PublicKey(idl.metadata.address);
@@ -22,6 +24,16 @@ const { SystemProgram } = web3;
 const App = () => {
 	const [walletAddress, setWalletAddress] = useState(null);
 	const [campaigns, setCampaigns] = useState([]);
+
+	const [view, setView] = useState('home');
+
+	const onNavigate = (newView) => {
+			if (newView === 'explore') {
+					getCampaigns();
+			}
+			setView(newView);
+	};
+
 	const getProvider = () => {
 		const connection = new Connection(network, opts.preflightCommitment);
 		const provider = new AnchorProvider(
@@ -143,33 +155,30 @@ const App = () => {
 	const renderNotConnectedContainer = () => (
 		<button onClick={connectWallet}>Connect to Wallet</button>
 	);
-	const renderConnectedContainer = () => (
-		<>
-			<button onClick={createCampaign}>Create a campaign…</button>
-			<button onClick={getCampaigns}>Get a list of campaigns…</button>
-			<br />
-			{campaigns.map((campaign) => (
-				<>
-					<p>Campaign ID: {campaign.pubkey.toString()}</p>
-					<p>
-						Balance:{" "}
-						{(
-							campaign.amountDonated / web3.LAMPORTS_PER_SOL
-						).toString()}
-					</p>
-					<p>{campaign.name}</p>
-					<p>{campaign.description}</p>
-					<button onClick={() => donate(campaign.pubkey)}>
-						Click to donate!
-					</button>
-					<button onClick={() => withdraw(campaign.pubkey)}>
-						Click to withdraw!
-					</button>
-					<br />
-				</>
-			))}
-		</>
-	);
+	const renderConnectedContainer = () => {
+		switch (view) {
+				case 'create':
+						return <button onClick={createCampaign}>Create a campaign…</button>;
+				case 'explore':
+						return (
+								<div className="campaigns-list">
+										{campaigns.map((campaign) => (
+												<CampaignItem 
+														key={campaign.pubkey.toString()} 
+														campaign={campaign} 
+														onDonate={donate} 
+														onWithdraw={withdraw}
+												/>
+										))}
+								</div>
+						);
+				case 'manage':
+						// Add content for managing campaigns
+						return <div>Manage Campaigns Content</div>;
+				default:
+						return <div>Home Content</div>;
+		}
+};
 	useEffect(() => {
 		const onLoad = async () => {
 			await checkIfWalletIsConnected();
@@ -180,10 +189,19 @@ const App = () => {
 
 	return (
 		<div className="App">
-			{!walletAddress && renderNotConnectedContainer()}
-			{walletAddress && renderConnectedContainer()}
-		</div>
+            <Header onNavigate={onNavigate} />
+            {!walletAddress && renderNotConnectedContainer()}
+            {walletAddress && renderConnectedContainer()}
+        </div>
 	);
 };
 
 export default App;
+
+
+// Edit Campaign Name 
+// Edit Campaign Description
+// View Own Campaign
+
+// Stretch:
+// User total donation, 

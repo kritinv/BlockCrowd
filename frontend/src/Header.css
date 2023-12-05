@@ -1,0 +1,68 @@
+.app-header {
+  background-color: #4CAF50; /* Color for the header */
+  color: white;
+  padding: 1% 2%; /* Padding relative to the screen size */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  max-height: 15vh; /* Max height relative to the viewport height */
+  width: auto; /* Keeps the aspect ratio */
+  margin-right: 20px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center; /* Aligns the navigation items vertically */
+  flex-wrap: wrap; /* Allows the nav items to wrap on smaller screens */
+}
+
+.nav-link {
+  background-color: transparent; /* Transparent background */
+  border: none; /* Removes border */
+  color: white;
+  text-decoration: none;
+  margin-left: 3vw;
+  font-size: 1.2em; /* Font size in em for scalability */
+  cursor: pointer; /* Changes cursor to pointer */
+  padding: 10px 15px; /* Padding for better sizing */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-link:hover {
+  background-color: #367C39; /* Slightly darker shade for hover */
+  border-radius: 5px; /* Rounded corners on hover */
+}
+
+/* Styles for the special 'Start a Campaign' button */
+.special-link {
+  background-color: #1E90FF; /* Deep blue color for the button */
+  color: white; /* White text color for better readability */
+  padding: 2.5vh 2vw; /* Padding for button size */
+  border-radius: 8px; /* Rounded corners */
+  text-decoration: none; /* Removes underline */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.special-link:hover {
+  background-color: #00BFFF; /* Lighter blue color on hover */
+  color: white; /* Keeping text color white for consistency */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .header-logo {
+    height: 10vh; /* Larger logo on smaller screens */
+  }
+
+  .nav-link {
+    font-size: 3vw; /* Larger font size on small screens */
+    margin-left: 10px;
+  }
+
+  .special-link {
+    /* Adjust button size for smaller screens if necessary */
+  }
+}

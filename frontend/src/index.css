@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.campaign-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.campaign-item h3 {
+  margin: 0;
+  color: #333;
+}
+
+.campaign-item button {
+  margin-right: 5px;
+}
