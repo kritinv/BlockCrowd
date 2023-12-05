@@ -1,4 +1,10 @@
 .app-header {
+  position: fixed; /* Fix the position at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #4CAF50; /* Or any color that fits your design */
+  z-index: 1000; /* Ensures the header is above other content */
   background-color: #4CAF50; /* Color for the header */
   color: white;
   padding: 1% 2%; /* Padding relative to the screen size */
@@ -7,10 +13,28 @@
   align-items: center;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-text {
+  /* margin-left: px; Adjust as needed */
+  color: white; /* Or any color that fits your design */
+  font-size: 1.5em; /* Adjust the font size as needed */
+  /* Add any additional styling you want here */
+}
+
 .header-logo {
-  max-height: 15vh; /* Max height relative to the viewport height */
-  width: auto; /* Keeps the aspect ratio */
-  margin-right: 20px;
+  background-position: center; /* Adjust this to focus on the logo */
+  background-size: cover; /* Adjust this if needed */
+  width: auto; /* Set the width as needed */
+  height: 15vh; /* Set the height as needed */
+  cursor: pointer;
+  /* max-height: 15vh; Max height relative to the viewport height */
+  /* width: auto; Keeps the aspect ratio */
+  /* margin-right: 2px; */
 }
 
 .header-nav {

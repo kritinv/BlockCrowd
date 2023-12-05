@@ -221,8 +221,11 @@ const App = () => {
 	return (
 		<div className="App">
             <Header onNavigate={onNavigate} />
-            {!walletAddress && renderNotConnectedContainer()}
+						<div className="main-content">
+						{!walletAddress && renderNotConnectedContainer()}
             {walletAddress && renderConnectedContainer()}
+						</div>
+            
         </div>
 	);
 };
