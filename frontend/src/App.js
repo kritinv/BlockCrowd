@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import CampaignItem from './CampaignItem'; 
 import Header from './Header';
+import "./HomePage.css"
+import StartCampaign from './StartCampaign';
 window.Buffer = Buffer;
 
 const programID = new PublicKey(idl.metadata.address);
@@ -90,7 +92,12 @@ const App = () => {
 			)
 		).then((campaigns) => setCampaigns(campaigns));
 	};
-	const createCampaign = async () => {
+	const handleCreateCampaign = (name, description) => {
+    // Add logic to create a campaign
+    console.log('Creating campaign:', name, description);
+    createCampaign(name, description); // Existing createCampaign function
+  };
+	const createCampaign = async (name, description) => {
 		try {
 			const provider = getProvider();
 			const program = new Program(idl, programID, provider);
@@ -101,7 +108,7 @@ const App = () => {
 				],
 				program.programId
 			);
-			await program.rpc.create("campaign name", "campaign description", {
+			await program.rpc.create(name, description, {
 				accounts: {
 					campaign,
 					user: provider.wallet.publicKey,
@@ -152,13 +159,37 @@ const App = () => {
 		}
 	};
 
+	const renderHomeContent = () => (
+		<div className="home-content">
+    <h1>Welcome to Our Crowdfunding Platform</h1>
+    <p>Discover and support amazing projects or start your own campaign to bring your ideas to life.</p>
+    
+    {/* "Start a Campaign" Button */}
+    <div className="start-campaign-button">
+      <button onClick={() => onNavigate('create')}>Start a Campaign</button>
+    </div>
+
+    <h2>How It Works</h2>
+    <ol>
+      <li>Create your campaign.</li>
+      <li>Share your story.</li>
+      <li>Receive funds and make your project a reality.</li>
+    </ol>
+
+    <div className="call-to-action">
+      <button onClick={() => onNavigate('explore')}>Explore Campaigns</button>
+    </div>
+  </div>
+	);
+
 	const renderNotConnectedContainer = () => (
 		<button onClick={connectWallet}>Connect to Wallet</button>
 	);
+	
 	const renderConnectedContainer = () => {
 		switch (view) {
 				case 'create':
-						return <button onClick={createCampaign}>Create a campaign…</button>;
+					return <StartCampaign onCreateCampaign={handleCreateCampaign} />;
 				case 'explore':
 						return (
 								<div className="campaigns-list">
@@ -176,7 +207,7 @@ const App = () => {
 						// Add content for managing campaigns
 						return <div>Manage Campaigns Content</div>;
 				default:
-						return <div>Home Content</div>;
+						return renderHomeContent();
 		}
 };
 	useEffect(() => {

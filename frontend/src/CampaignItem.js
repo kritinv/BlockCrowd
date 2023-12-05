@@ -6,6 +6,7 @@ import {
 	utils,
 	BN,
 } from "@project-serum/anchor";
+import './CampaignItem.css';
 
 const CampaignItem = ({ campaign, onDonate, onWithdraw }) => (
   <div className="campaign-item">

@@ -1,0 +1,88 @@
+/* HomePage.css */
+
+.home-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-content h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.home-content p {
+  color: #666;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.featured-campaigns {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+.testimonials {
+  background-color: #f0f0f0;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+.call-to-action {
+  margin-top: 2em;
+}
+
+.call-to-action button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.call-to-action button:hover {
+  background-color: #0056b3;
+}
+
+/* General Styles for Lists */
+ol {
+  text-align: left;
+  display: inline-block;
+  margin: 1em auto;
+}
+
+ol li {
+  margin-bottom: 0.5em;
+}
+
+
+/* Styling for 'Start a Campaign' Button */
+.start-campaign-button {
+  margin: 20px 0;
+}
+
+.start-campaign-button button {
+  background-color: #28a745; /* A vibrant green color */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.start-campaign-button button:hover {
+  background-color: #218838; /* A slightly darker green for hover effect */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.start-campaign-button button:focus {
+  outline: none;
+  box-shadow: 0px 0px 8px 2px #218838; /* Focus effect for accessibility */
+}
