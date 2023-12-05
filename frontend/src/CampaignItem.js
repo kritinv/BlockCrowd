@@ -15,7 +15,6 @@ const CampaignItem = ({ campaign, onDonate, onWithdraw }) => (
     <p>Balance: {(campaign.amountDonated / web3.LAMPORTS_PER_SOL).toFixed(2)} SOL</p>
     <p>{campaign.description}</p>
     <button onClick={() => onDonate(campaign.pubkey)}>Donate</button>
-    <button onClick={() => onWithdraw(campaign.pubkey)}>Withdraw</button>
   </div>
 );
 

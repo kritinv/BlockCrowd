@@ -14,6 +14,8 @@ import CampaignItem from './CampaignItem';
 import Header from './Header';
 import "./HomePage.css"
 import StartCampaign from './StartCampaign';
+import ManageCampaigns from "./ManageCampaigns";
+import EditCampaign from "./EditCampaign";
 window.Buffer = Buffer;
 
 const programID = new PublicKey(idl.metadata.address);
@@ -124,6 +126,36 @@ const App = () => {
 		}
 	};
 
+	// Function to edit campaign details
+	const editCampaign = async (campaignPublicKey, newName, newDescription) => {
+		
+	};
+
+	// Function to delete a campaign
+	const deleteCampaign = async (campaignPublicKey) => {
+		// Smart contract call to delete the campaign
+	};
+
+	const [isEditing, setIsEditing] = useState(false);
+	const [editingCampaign, setEditingCampaign] = useState(null);
+
+	const startEditing = (campaign) => {
+		setEditingCampaign(campaign);
+		setIsEditing(true);
+	};
+
+	const cancelEditing = () => {
+		setIsEditing(false);
+		setEditingCampaign(null);
+	};
+
+	const saveEdit = (campaignPublicKey, newName, newDescription) => {
+		editCampaign(campaignPublicKey, newName, newDescription);
+		setIsEditing(false);
+		setEditingCampaign(null);
+		// Refresh the campaign list
+	};
+
 	const donate = async (publicKey) => {
 		try {
 			const provider = getProvider();
@@ -204,8 +236,24 @@ const App = () => {
 								</div>
 						);
 				case 'manage':
-						// Add content for managing campaigns
-						return <div>Manage Campaigns Content</div>;
+					return (
+						<>
+						<ManageCampaigns
+							campaigns={campaigns}
+							onEdit={startEditing}
+							onDelete={deleteCampaign}
+							onWithdraw={withdraw}
+						/>
+						{isEditing && (
+							<EditCampaign
+								campaign={editingCampaign}
+								onSaveEdit={saveEdit}
+								onCancel={cancelEditing}
+							/>
+						)}		
+						</>
+						
+					);
 				default:
 						return renderHomeContent();
 		}
