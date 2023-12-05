@@ -6,7 +6,7 @@ const ManageCampaigns = ({ campaigns, onEdit, onDelete, onWithdraw }) => {
   return (
     <div className="manage-campaigns-container">
       {campaigns.map(campaign => (
-        <div className="campaign-item" key={campaign.pubkey.toString()}>
+        <div className="campaign-item-manage-campaign" key={campaign.pubkey.toString()}>
           <h3>{campaign.name}</h3>
           <p>{campaign.description}</p>
           <div className="campaign-actions">

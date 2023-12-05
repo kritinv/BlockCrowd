@@ -156,12 +156,12 @@ const App = () => {
 		// Refresh the campaign list
 	};
 
-	const donate = async (publicKey) => {
+	const donate = async (publicKey, lamports) => {
 		try {
 			const provider = getProvider();
 			const program = new Program(idl, programID, provider);
 
-			await program.rpc.donate(new BN(0.2 * web3.LAMPORTS_PER_SOL), {
+			await program.rpc.donate(new BN(lamports * web3.LAMPORTS_PER_SOL), {
 				accounts: {
 					campaign: publicKey,
 					user: provider.wallet.publicKey,

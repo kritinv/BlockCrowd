@@ -19,12 +19,24 @@
   line-height: 1.5;
 }
 
+.campaign-item input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+.campaign-item input[type="number"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 .campaign-item button {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
-  margin-right: 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;

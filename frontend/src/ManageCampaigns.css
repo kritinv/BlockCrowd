@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-.campaign-item {
+.campaign-item-manage-campaign {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 15px;
@@ -16,12 +16,12 @@
   background-color: #f9f9f9;
 }
 
-.campaign-item h3 {
+.campaign-item-manage-campaign h3 {
   color: #333;
   margin-bottom: 10px;
 }
 
-.campaign-item p {
+.campaign-item-manage-campaign p {
   color: #666;
   margin-bottom: 20px;
 }
